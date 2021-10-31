@@ -81,10 +81,6 @@ function buildQuiz() {
 
 buildQuiz();
 
-function prev() {}
-
-function next() {}
-
 function showResults() {
   let answerContainers = quizContainer.querySelectorAll(".answers");
   let userAnswers = "";
