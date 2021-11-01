@@ -86,11 +86,15 @@ function showResults() {
   let userAnswers = "";
 
   for (var i = 0; i < questions.length; i++) {
-    // find selected answer
-    userAnswers = (
-      answerContainers[i].querySelector(`input[name=question${i}]:checked`) ||
-      {}
-    ).value;
+    markedCheckbox = answerContainers[i].querySelectorAll(
+      `input[name=question${i}]:checked`
+    );
+    userAnswers += `<div>${questions[i].question}:`;
+    for (var checkbox of markedCheckbox) {
+       userAnswers += ` ${checkbox.value}`;
+    } 
+    userAnswers += `</div>`; 
+
   }
   resultsContainer.innerHTML = userAnswers;
 }
