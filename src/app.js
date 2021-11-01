@@ -5,7 +5,6 @@ const prevButton = document.getElementById("prev");
 const nextButton = document.getElementById("next");
 const submitButton = document.getElementById("submit");
 
-
 let currentSlide = 0;
 
 prevButton.addEventListener("click", prev);
@@ -64,7 +63,7 @@ function buildQuiz() {
 
     for (letter in questions[i].answers) {
       answers.push(
-        `<label><input type="checkbox" class="form-check-input" name="question${i}" value="${letter}">${letter}: ${questions[i].answers[letter]}</label>`
+        `<label><input type="checkbox" class="form-check-input" onChange="checkAnswers()" name="question${i}" value="${letter}">${letter}: ${questions[i].answers[letter]}</label>`
       );
     }
 
@@ -81,6 +80,19 @@ function buildQuiz() {
 
 buildQuiz();
 
+function checkAnswers() {
+  let answerContainers = quizContainer.querySelectorAll(".answers");
+  submitButton.disabled = false;
+  for (var i = 0; i < questions.length; i++) {
+    markedCheckbox = answerContainers[i].querySelectorAll(
+      `input[name=question${i}]:checked`
+    );
+    if (markedCheckbox.length < 1) {
+      submitButton.disabled = true;
+    }
+  }
+}
+
 function showResults() {
   let answerContainers = quizContainer.querySelectorAll(".answers");
   let userAnswers = "";
@@ -89,13 +101,14 @@ function showResults() {
     markedCheckbox = answerContainers[i].querySelectorAll(
       `input[name=question${i}]:checked`
     );
+
     userAnswers += `<div>${questions[i].question}:`;
     for (var checkbox of markedCheckbox) {
-       userAnswers += ` ${checkbox.value}`;
-    } 
-    userAnswers += `</div>`; 
-
+      userAnswers += ` ${checkbox.value}`;
+    }
+    userAnswers += `</div>`;
   }
+
   resultsContainer.innerHTML = userAnswers;
 }
 
