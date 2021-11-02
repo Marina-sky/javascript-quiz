@@ -1,9 +1,9 @@
 const quizContainer = document.getElementById("quiz");
-const questionText = document.getElementById("question-text");
 const resultsContainer = document.getElementById("results");
 const prevButton = document.getElementById("prev");
 const nextButton = document.getElementById("next");
 const submitButton = document.getElementById("submit");
+const message = document.getElementById("error-msg");
 
 let currentSlide = 0;
 
@@ -13,7 +13,7 @@ submitButton.addEventListener("click", showResults);
 
 const questions = [
   {
-    question: "Question 1",
+    question: "Question 1 (max 3)",
     answers: {
       a: "1",
       b: "2",
@@ -40,7 +40,7 @@ const questions = [
     },
   },
   {
-    question: "Question 4",
+    question: "Question 4 (max 6)",
     answers: {
       a: "1",
       b: "2",
@@ -89,6 +89,13 @@ function checkAnswers() {
     );
     if (markedCheckbox.length < 1) {
       submitButton.disabled = true;
+    }
+    if (markedCheckbox.length > i + 3) {
+      message.innerHTML = "You have selected too many answers.";
+      setTimeout(function () {
+        message.innerHTML = "";
+      }, 3000);
+      
     }
   }
 }

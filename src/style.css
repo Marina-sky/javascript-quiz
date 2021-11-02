@@ -73,3 +73,8 @@ label {
    top: 70px;
    font-size: 16px;
 }
+
+.message {
+   font-size: 18px;
+   color: red;
+}
