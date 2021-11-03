@@ -13,7 +13,7 @@ submitButton.addEventListener("click", showResults);
 
 const questions = [
   {
-    question: "Question 1 (max 3)",
+    question: "Question 1",
     answers: {
       a: "1",
       b: "2",
@@ -40,7 +40,7 @@ const questions = [
     },
   },
   {
-    question: "Question 4 (max 6)",
+    question: "Question 4",
     answers: {
       a: "1",
       b: "2",
@@ -82,20 +82,30 @@ buildQuiz();
 
 function checkAnswers() {
   let answerContainers = quizContainer.querySelectorAll(".answers");
+  let navLink = document.querySelectorAll(".nav-link");
   submitButton.disabled = false;
+  
   for (var i = 0; i < questions.length; i++) {
     markedCheckbox = answerContainers[i].querySelectorAll(
       `input[name=question${i}]:checked`
     );
+
     if (markedCheckbox.length < 1) {
       submitButton.disabled = true;
     }
+
     if (markedCheckbox.length > i + 3) {
-      message.innerHTML = "You have selected too many answers.";
+      message.innerHTML = "You have selected too many answers on question " + (i + 1);
       setTimeout(function () {
         message.innerHTML = "";
       }, 3000);
-      
+      submitButton.disabled = true;
+    }
+
+    if (markedCheckbox.length > 0) {
+      navLink[i].style.color = "red";
+    } else {
+      navLink[i].style.color = "rgba(0,0,0,.55)";
     }
   }
 }
