@@ -97,3 +97,8 @@ li:last-child {
    padding: 0;
    border-radius: 4px;
 }
+
+.navbar-nav {
+   flex-direction: row;
+   justify-content: center;
+}
