@@ -7,8 +7,8 @@ const message = document.getElementById("error-msg");
 
 let currentSlide = 0;
 
-prevButton.addEventListener("click", prev);
-nextButton.addEventListener("click", next);
+prevButton.addEventListener("click", showPreviousSlide);
+nextButton.addEventListener("click", showNextSlide);
 submitButton.addEventListener("click", showResults);
 
 const questions = [
@@ -151,6 +151,3 @@ function showNextSlide() {
 function showPreviousSlide() {
   showSlide(currentSlide - 1);
 }
-
-prevButton.addEventListener("click", showPreviousSlide);
-nextButton.addEventListener("click", showNextSlide);

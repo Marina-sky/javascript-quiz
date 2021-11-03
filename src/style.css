@@ -22,6 +22,14 @@ label {
    margin-right: 10px;
 }
 
+li {
+  border-right: 1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
 .container {
   width: 700px;
   background-color: beige;
@@ -34,6 +42,10 @@ label {
   text-align: center;
   position: relative;
   height: 400px;
+}
+
+.container-fluid {
+   padding: 0;
 }
 
 .btn {
@@ -77,4 +89,11 @@ label {
 .message {
    font-size: 18px;
    color: red;
+}
+
+.navbar {
+   position: relative;
+   bottom: 230px;
+   padding: 0;
+   border-radius: 4px;
 }
