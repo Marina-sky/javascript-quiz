@@ -40,7 +40,6 @@ function buildQuiz() {
 
   for (var i = 0; i < questions.length; i++) {
     let n = randomNumber(2, 8);
-    console.log(n);
     answers = questions[i].answers;
 
     for (j = 1; j <= n; j++) {
