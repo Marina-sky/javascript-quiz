@@ -14,56 +14,38 @@ submitButton.addEventListener("click", showResults);
 const questions = [
   {
     question: "Question 1",
-    answers: {
-      a: "1",
-      b: "2",
-      c: "3",
-      d: "4",
-      e: "5",
-    },
+    answers: [],
   },
   {
     question: "Question 2",
-    answers: {
-      a: "1",
-      b: "2",
-      c: "3",
-    },
+    answers: [],
   },
   {
     question: "Question 3",
-    answers: {
-      a: "1",
-      b: "2",
-      c: "3",
-      d: "4",
-    },
+    answers: [],
   },
   {
     question: "Question 4",
-    answers: {
-      a: "1",
-      b: "2",
-      c: "3",
-      d: "4",
-      e: "5",
-      f: "6",
-      g: "7",
-      h: "8",
-    },
+    answers: [],
   },
 ];
+
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function buildQuiz() {
   let output = [];
   let answers;
 
   for (var i = 0; i < questions.length; i++) {
-    answers = [];
+    let n = randomNumber(2, 8);
+    console.log(n);
+    answers = questions[i].answers;
 
-    for (letter in questions[i].answers) {
+    for (j = 1; j <= n; j++) {
       answers.push(
-        `<label><input type="checkbox" class="form-check-input" onChange="checkAnswers()" name="question${i}" value="${letter}">${letter}: ${questions[i].answers[letter]}</label>`
+        `<label><input type="checkbox" class="form-check-input" onChange="checkAnswers()" name="question${i}" value="${j}">${j}</label>`
       );
     }
 
