@@ -84,7 +84,7 @@ function checkAnswers() {
   let answerContainers = quizContainer.querySelectorAll(".answers");
   let navLink = document.querySelectorAll(".nav-link");
   submitButton.disabled = false;
-  
+
   for (var i = 0; i < questions.length; i++) {
     markedCheckbox = answerContainers[i].querySelectorAll(
       `input[name=question${i}]:checked`
@@ -95,7 +95,8 @@ function checkAnswers() {
     }
 
     if (markedCheckbox.length > i + 3) {
-      message.innerHTML = "You have selected too many answers on question " + (i + 1);
+      message.innerHTML =
+        `You have selected too many answers on question ${i + 1} (max ${i + 3})`;
       setTimeout(function () {
         message.innerHTML = "";
       }, 3000);
