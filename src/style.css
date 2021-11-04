@@ -12,7 +12,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 input {
@@ -93,9 +93,9 @@ li:last-child {
 }
 
 .navbar {
-  position: fixed;
-  bottom: 570px;
-  right: 655px;
+  position: absolute;
+  top: 30px;
+  left: 45%;
   padding: 0;
   border-radius: 4px;
 }
@@ -105,10 +105,6 @@ li:last-child {
   justify-content: center;
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    position: fixed;
-    bottom: 50px;
-    right: 150px;
-  }
+.nav-link {
+  font-size: 30px;
 }
